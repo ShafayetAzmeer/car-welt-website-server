@@ -62,7 +62,6 @@ async function run() {
         app.post("/users", async (req, res) => {
           const user = req.body;
           const result = await usersCollection.insertOne(user);
-          // console.log(result);
           res.send(result);
       });
 
@@ -72,7 +71,6 @@ async function run() {
         const result = await productsCollection
         .find({ _id: ObjectId(req.params.id) })
         .toArray();
-        // console.log(result);
         res.send(result[0]);
       });
 
@@ -80,7 +78,6 @@ async function run() {
 
       app.post("/confirmPurchase", async (req, res) => {
         const result = await confirmPurchaseCollection.insertOne(req.body);
-        // console.log(result);
         res.send(result);
       });
 
@@ -90,7 +87,6 @@ async function run() {
         const result = await allProductCollection
         .find({ _id: ObjectId(req.params.id) })
         .toArray();
-        // console.log(result);
         res.send(result[0]);
       });
 
@@ -98,7 +94,6 @@ async function run() {
 
       app.post("/confirmAllProductPurchase", async (req, res) => {
         const result = await confirmPurchaseCollection.insertOne(req.body);
-        // console.log(result);
         res.send(result);
       });
 
@@ -106,7 +101,6 @@ async function run() {
 
       app.post("/addNewProduct", async(req, res) => {
         const result = await allProductCollection.insertOne(req.body);
-        // console.log(result);
         res.send(result);
      });
 
@@ -132,7 +126,6 @@ async function run() {
 
       app.put('/users/admin', async (req, res) => {
         const user = req.body;
-        // console.log('put', user);
         const filter = {email: user.email};
         const updateDoc = {$set : {role: 'admin'}};
         const result = await usersCollection.updateOne(filter, updateDoc)
@@ -198,7 +191,6 @@ async function run() {
 
       app.post("/review", async (req, res) => {
         const result = await reviewCollection.insertOne(req.body);
-        // console.log(result);
         res.send(result);
       });
 
